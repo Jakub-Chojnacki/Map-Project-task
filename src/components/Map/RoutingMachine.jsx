@@ -14,8 +14,8 @@ const CreateRoutingMachineLayer = (props) => {
     },
     show: false,
     addWaypoints: false,
-    routeWhileDragging: true,
-    draggableWaypoints: true,
+    routeWhileDragging: false,
+    draggableWaypoints: false,
     fitSelectedRoutes: false,
     showAlternatives: false,
 

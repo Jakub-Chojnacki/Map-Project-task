@@ -1,5 +1,5 @@
 import React,{useState,useRef,useEffect} from "react";
-import { MapContainer, TileLayer, LayersControl, useMapEvents  } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import RoutingMachine from "./RoutingMachine";
 import LeafletControlGeocoder from './LeafletControlGeocoder'
 
@@ -20,16 +20,16 @@ const Map = (props) => {
  
   return (
     <div>
-<MapContainer center={[51.505, 0.1]} zoom={13}>
-    <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
- 
-    <LeafletControlGeocoder updatePointA={pointA => setPointA(pointA)} placeholder="Enter point A"/>
-    <LeafletControlGeocoder updatePointB={pointB => setPointB(pointB)}  placeholder="Enter point B"/>
-    <RoutingMachine ref={rMachine} waypoints={waypointsToUse} pointA={pointA} pointB={pointB} onSubmit={distance => setDistance(distance)}/>
-   
+    <MapContainer center={[51.505, 0.1]} zoom={13}>
+      <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+  
+      <LeafletControlGeocoder updatePointA={pointA => setPointA(pointA)} placeholder="Enter point A"/>
+      <LeafletControlGeocoder updatePointB={pointB => setPointB(pointB)}  placeholder="Enter point B"/>
+      <RoutingMachine ref={rMachine} waypoints={waypointsToUse} pointA={pointA} pointB={pointB} onSubmit={distance => setDistance(distance)}/>
+    
     </MapContainer>
 
     <div>{`Distance ${Math.round(((distance/1000) * 100)) / 100} km`}</div> 
