@@ -5,7 +5,7 @@ import LeafletControlGeocoder from './LeafletControlGeocoder'
 import MapContext from '../../context/map-context'
 
 const Map = (props) => {
-  const {waypointA,waypointB,setWaypointA,setWaypointB,setNameA,setNameB,setAddressA,setAddressB} = useContext(MapContext)
+  const {waypointA,waypointB,setWaypointA,setWaypointB,setAddressA,setAddressB} = useContext(MapContext)
   const rMachine = useRef();
   useEffect(() => {
     if (rMachine.current) {
@@ -54,7 +54,7 @@ const Map = (props) => {
     }
   return (
     <div className="map">
-    <MapContainer center={props.center} zoom={15}>
+    <MapContainer center={props.center} zoom={8}>
       <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

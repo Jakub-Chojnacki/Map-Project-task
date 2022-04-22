@@ -29,15 +29,16 @@ const Home = () => {
 return (
     <main className={styles.container}>
          <Map showSearch={true} center={waypointA ? waypointA : [51.15,1.1]}/>
-         {(!waypointA || !waypointB) &&<p>Choose two waypoints to see results</p>}
+         {(!waypointA || !waypointB) &&<p class={styles.important}>Choose two waypoints to see results</p>}
          { (waypointA && waypointB) &&
-        <button color="primary"  onClick={checkResultsHandler} disabled={!waypointA || !waypointB} className={styles.btn}>
+        <button className={styles.btn} onClick={checkResultsHandler} disabled={!waypointA || !waypointB} >
              Check results
          </button>
          }
-        
-        <button onClick={showHistoryHandler}>Show History</button>
+        <h2>Your History:</h2>
         {(history && showHistory )&& <History />}
+        <button className={styles.btn} onClick={showHistoryHandler}>{showHistory?  `Hide History` : `Show History`}</button>
+       
     </main>
 )
 

@@ -21,3 +21,11 @@
 .btn:hover{
     background-color:hsla(177, 42%, 36%,1);
 }
+
+.important{
+   color: #ED2939;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 1em;
+    margin-bottom: 3em;
+}

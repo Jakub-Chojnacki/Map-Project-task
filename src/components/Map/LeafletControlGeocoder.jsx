@@ -4,7 +4,6 @@ import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder.js";
 import L from "leaflet";
 
-import icon from "./constants";
 
 export default function LeafletControlGeocoder(props) {
   const map = useMap();
@@ -32,12 +31,6 @@ export default function LeafletControlGeocoder(props) {
       geocoder
     })
       .on("markgeocode", function (e) {
-        var latlng = e.geocode.center;
-        console.log(e.geocode)
-        L.marker(latlng, { icon })
-          .addTo(map)
-          .bindPopup(e.geocode.name)
-          .openPopup();
         map.fitBounds(e.geocode.bbox);
         if(props.updateWaypointA){
           props.updateWaypointA(e.geocode)
