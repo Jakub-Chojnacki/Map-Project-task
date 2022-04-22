@@ -4,10 +4,12 @@ import Home from './pages/Home'
 import { Routes, Route } from "react-router-dom";
 import Results from './pages/Results'
 import {MapProvider} from './context/map-context'
+import MainNavigation from './components/UI/MainNavigation'
 function App() {
  
   return (
     <div className="App">
+      <MainNavigation/>
       <MapProvider>
         <Map />
         <Routes>

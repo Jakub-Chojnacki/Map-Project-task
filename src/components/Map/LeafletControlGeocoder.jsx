@@ -8,7 +8,6 @@ import icon from "./constants";
 
 export default function LeafletControlGeocoder(props) {
   const map = useMap();
-  const {updateWaypointA,updateWaypointB} = props;
 
   useEffect(() => {
     var geocoder = L.Control.Geocoder.nominatim();
@@ -39,10 +38,10 @@ export default function LeafletControlGeocoder(props) {
           .bindPopup(e.geocode.name)
           .openPopup();
         map.fitBounds(e.geocode.bbox);
-        if(props.updatePointA){
-          updateWaypointA(e.geocode.center)
+        if(props.updateWaypointA){
+          props.updateWaypointA(e.geocode.center)
         }else{
-          updateWaypointB(e.geocode.center)
+          props.updateWaypointB(e.geocode.center)
         }
        
       })

@@ -13,8 +13,6 @@ const Map = (props) => {
     }
   }, [waypointA,waypointB, rMachine]);
  
-
- 
   return (
     <div>
     <MapContainer center={[51.505, 0.1]} zoom={13}>
@@ -24,7 +22,7 @@ const Map = (props) => {
         />
       <LeafletControlGeocoder updateWaypointA={pointA => setWaypointA(pointA)} placeholder="Enter point A"/>
       <LeafletControlGeocoder updateWaypointB={pointB => setWaypointB(pointB)}   placeholder="Enter point B"/>
-      <RoutingMachine ref={rMachine}/>
+      <RoutingMachine ref={rMachine} />
     </MapContainer>
     </div>
 

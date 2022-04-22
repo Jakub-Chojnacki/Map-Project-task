@@ -1,0 +1,24 @@
+.container{
+    padding: 1em;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    background-color: #85CDCA;
+    color: white;
+}
+
+.header {
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap: 0.4em;
+}
+
+.logo{
+    width: 2.5em;
+}
+
+.github{
+    font-size: 2em;
+}
