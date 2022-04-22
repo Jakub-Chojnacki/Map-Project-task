@@ -8,15 +8,17 @@ import MainNavigation from './components/UI/MainNavigation'
 function App() {
  
   return (
-    <div className="App">
+    <div >
       <MainNavigation/>
+      <div className="App">
       <MapProvider>
-        <Map />
+       
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/results" element={<Results />}/>
         </Routes>
        </MapProvider>
+       </div>
     </div>
   );
 }

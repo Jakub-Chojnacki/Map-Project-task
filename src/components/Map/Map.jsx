@@ -14,8 +14,8 @@ const Map = (props) => {
   }, [waypointA,waypointB, rMachine]);
  
   return (
-    <div>
-    <MapContainer center={[51.505, 0.1]} zoom={13}>
+    <div className="map">
+    <MapContainer center={props.center} zoom={15}>
       <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

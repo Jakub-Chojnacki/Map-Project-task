@@ -15,7 +15,7 @@ const Calculator = (props) => {
     return (
         <div >
             <input type="number" step="0.01" min="0.1" value={pricePerKm} onChange={handleChange}/>
-            <p>Price per KM: {pricePerKm}</p>
+            <p>Price per km: {pricePerKm}</p>
             <p>Distance in kilometers: {distanceKm}</p>
             <p>Total cost: {totalCost}zł</p>
             <p>Number of days: {numberOfDays}</p>
