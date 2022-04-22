@@ -8,16 +8,13 @@ import {Navigate} from 'react-router-dom'
 
 const Results = () => {
     const {waypointA,waypointB} = useContext(MapContext)
-    
-  
     return (
-        <div className={styles.results}>
-            <p>This is the results page</p>
+        <main className={styles.results}>
              <Map center={waypointA ? waypointA : [51.15,1.1]}/>
              <Calculator />
              {/* Navigate to homepage if someone tries to modify url to /results without inputting data */}
              {(!waypointA || !waypointB) && <Navigate replace to="/"/>}  
-        </div>
+        </main>
     )
 }
 

@@ -33,15 +33,16 @@ export default function LeafletControlGeocoder(props) {
     })
       .on("markgeocode", function (e) {
         var latlng = e.geocode.center;
+        console.log(e.geocode)
         L.marker(latlng, { icon })
           .addTo(map)
           .bindPopup(e.geocode.name)
           .openPopup();
         map.fitBounds(e.geocode.bbox);
         if(props.updateWaypointA){
-          props.updateWaypointA(e.geocode.center,e.geocode.name)
+          props.updateWaypointA(e.geocode)
         }else{
-          props.updateWaypointB(e.geocode.center,e.geocode.name)
+          props.updateWaypointB(e.geocode)
         }
        
       })
@@ -52,5 +53,6 @@ export default function LeafletControlGeocoder(props) {
 
   // I only need this to run ONCE because otherwise it would create new Search boxes on each reload
 
+  
   return null;
 }

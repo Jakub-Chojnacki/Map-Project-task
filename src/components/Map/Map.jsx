@@ -5,7 +5,7 @@ import LeafletControlGeocoder from './LeafletControlGeocoder'
 import MapContext from '../../context/map-context'
 
 const Map = (props) => {
-  const {waypointA,waypointB,setWaypointA,setWaypointB,setNameA,setNameB} = useContext(MapContext)
+  const {waypointA,waypointB,setWaypointA,setWaypointB,setNameA,setNameB,setAddressA,setAddressB} = useContext(MapContext)
   const rMachine = useRef();
   useEffect(() => {
     if (rMachine.current) {
@@ -13,15 +13,43 @@ const Map = (props) => {
     }
   }, [waypointA,waypointB, rMachine]);
  
-  
-    const updateWaypointA = (point,name) => {
-      setWaypointA(point);
-      setNameA(name)
-
+    const validateAddress = (city,country,road,house_number,town) => {
+        let temp = '';
+        if(road){
+          temp+=`${road}`
+        }
+        if(house_number){
+          temp+=` ${house_number}`
+        }
+      
+        if(city){
+            temp+=`, ${city}`
+        }
+        if(town){
+          temp+=`, ${town}`
+        }
+        if(country){
+            temp+=`, ${country}`
+        }
+        temp = temp.replace(/^,/, '');
+        return temp;
     }
-    const updateWaypointB = (point,name) => {
-      setWaypointB(point);
-      setNameB(name)
+  
+    const updateWaypointA = (geoData) => {
+      setWaypointA(geoData.center);
+       const {city,country,road,house_number,town}= geoData.properties.address
+       const temp = validateAddress(city,country,road,house_number,town)
+      setAddressA(temp)
+      
+     
+    }
+    
+    const updateWaypointB = (geoData) => {
+      setWaypointB(geoData.center);
+      const {city,country,road,house_number,town}= geoData.properties.address
+      const temp = validateAddress(city,country,road,house_number,town)
+      setAddressB(temp)
+      
 
     }
   return (
@@ -31,8 +59,8 @@ const Map = (props) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-      <LeafletControlGeocoder updateWaypointA={updateWaypointA}  placeholder="Enter point A"/>
-      <LeafletControlGeocoder updateWaypointB={updateWaypointB}    placeholder="Enter point B"/>
+      {props.showSearch && <LeafletControlGeocoder updateWaypointA={updateWaypointA}  placeholder="Enter point A"/>}
+      {props.showSearch && <LeafletControlGeocoder updateWaypointB={updateWaypointB}    placeholder="Enter point B"/>}
       <RoutingMachine ref={rMachine} />
     </MapContainer>
     </div>

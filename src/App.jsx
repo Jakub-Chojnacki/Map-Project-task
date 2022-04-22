@@ -9,9 +9,11 @@ function App() {
 
   return (
     <div >
+     
       <MainNavigation/>
       <div className="App">
       <MapProvider>
+    
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/results" element={<Results />}/>

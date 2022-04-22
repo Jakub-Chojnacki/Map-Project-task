@@ -5,22 +5,22 @@ const MapContext = createContext();
 export function MapProvider({children}){
     const [distance,setDistance] = useState(0)
     const [waypointA,setWaypointA] = useState()
-    const [nameA,setNameA] = useState()
     const [waypointB,setWaypointB] = useState()
-    const [nameB, setNameB] = useState()
+    const [addressA,setAddressA] = useState()
+    const [addressB,setAddressB] = useState()
     return (
         <MapContext.Provider
          value={{
              distance,
              setDistance,
              waypointA,
-             nameA,
-             setNameA,
              setWaypointA,
              waypointB,
              setWaypointB,
-             nameB,
-             setNameB}}>
+             addressA,
+             setAddressA,
+             addressB,
+             setAddressB}}>
                  
             {children}
         </MapContext.Provider>
