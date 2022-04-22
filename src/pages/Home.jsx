@@ -1,24 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import MapContext from '../context/map-context'
 import {useContext} from 'react'
+import styles from './Home.module.css'
 import Map from '../components/Map/Map'
 const Home = () => {
 
-  const {waypointA} = useContext(MapContext)
+  const {waypointA,waypointB} = useContext(MapContext)
   let navigate = useNavigate(); 
   const routeChange = () =>{ 
     let path = `/results`; 
     navigate(path);
   }
 return (
-    <div className="home">
+    <div className={styles.container}>
         <div>This is the homepage</div>
          <Map center={waypointA ? waypointA : [51.15,1.1]}/>
-        <button color="primary" className="px-4"
-            onClick={routeChange}
-              >
-              Submit
-            </button>
+         {(!waypointA || !waypointB) &&<p>Choose two waypoints to see results</p>}
+         { (waypointA && waypointB) &&
+        <button color="primary"  onClick={routeChange} disabled={!waypointA || !waypointB} className={styles['btn--results']}>
+             Check results
+         </button>
+         }
     </div>
 )
 

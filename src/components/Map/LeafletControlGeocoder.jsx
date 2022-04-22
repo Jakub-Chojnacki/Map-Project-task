@@ -32,6 +32,7 @@ export default function LeafletControlGeocoder(props) {
       geocoder
     })
       .on("markgeocode", function (e) {
+        console.log(e.geocode.name)
         var latlng = e.geocode.center;
         L.marker(latlng, { icon })
           .addTo(map)

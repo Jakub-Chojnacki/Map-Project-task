@@ -1,0 +1,20 @@
+.container{
+    width: 100vw;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.btn--results{
+    padding:0.8em;
+    outline: none;
+    border:none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    margin-top: 2rem;
+    background-color:hsla(177, 42%, 66%,1);
+}
+
