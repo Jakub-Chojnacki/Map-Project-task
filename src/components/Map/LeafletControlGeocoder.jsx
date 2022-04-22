@@ -32,7 +32,6 @@ export default function LeafletControlGeocoder(props) {
       geocoder
     })
       .on("markgeocode", function (e) {
-        console.log(e.geocode.name)
         var latlng = e.geocode.center;
         L.marker(latlng, { icon })
           .addTo(map)
@@ -40,9 +39,9 @@ export default function LeafletControlGeocoder(props) {
           .openPopup();
         map.fitBounds(e.geocode.bbox);
         if(props.updateWaypointA){
-          props.updateWaypointA(e.geocode.center)
+          props.updateWaypointA(e.geocode.center,e.geocode.name)
         }else{
-          props.updateWaypointB(e.geocode.center)
+          props.updateWaypointB(e.geocode.center,e.geocode.name)
         }
        
       })

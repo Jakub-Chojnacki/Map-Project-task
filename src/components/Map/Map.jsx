@@ -5,7 +5,7 @@ import LeafletControlGeocoder from './LeafletControlGeocoder'
 import MapContext from '../../context/map-context'
 
 const Map = (props) => {
-  const {waypointA,waypointB,setWaypointA,setWaypointB} = useContext(MapContext)
+  const {waypointA,waypointB,setWaypointA,setWaypointB,setNameA,setNameB} = useContext(MapContext)
   const rMachine = useRef();
   useEffect(() => {
     if (rMachine.current) {
@@ -13,6 +13,17 @@ const Map = (props) => {
     }
   }, [waypointA,waypointB, rMachine]);
  
+  
+    const updateWaypointA = (point,name) => {
+      setWaypointA(point);
+      setNameA(name)
+
+    }
+    const updateWaypointB = (point,name) => {
+      setWaypointB(point);
+      setNameB(name)
+
+    }
   return (
     <div className="map">
     <MapContainer center={props.center} zoom={15}>
@@ -20,8 +31,8 @@ const Map = (props) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-      <LeafletControlGeocoder updateWaypointA={pointA => setWaypointA(pointA)} placeholder="Enter point A"/>
-      <LeafletControlGeocoder updateWaypointB={pointB => setWaypointB(pointB)}   placeholder="Enter point B"/>
+      <LeafletControlGeocoder updateWaypointA={updateWaypointA}  placeholder="Enter point A"/>
+      <LeafletControlGeocoder updateWaypointB={updateWaypointB}    placeholder="Enter point B"/>
       <RoutingMachine ref={rMachine} />
     </MapContainer>
     </div>
