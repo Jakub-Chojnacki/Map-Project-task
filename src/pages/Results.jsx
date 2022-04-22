@@ -1,7 +1,11 @@
-
+import Calculator from '../components/Calculator'
+import React from 'react'
 const Results = () => {
     return (
-        <div>This is the results page</div>
+        <React.Fragment>
+            <div>This is the results page</div>
+                <Calculator />
+        </React.Fragment>
     )
 }
 

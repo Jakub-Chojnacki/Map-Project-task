@@ -8,6 +8,7 @@ import icon from "./constants";
 
 export default function LeafletControlGeocoder(props) {
   const map = useMap();
+  const {updateWaypointA,updateWaypointB} = props;
 
   useEffect(() => {
     var geocoder = L.Control.Geocoder.nominatim();
@@ -39,16 +40,18 @@ export default function LeafletControlGeocoder(props) {
           .openPopup();
         map.fitBounds(e.geocode.bbox);
         if(props.updatePointA){
-          props.updatePointA(e.geocode.center)
+          updateWaypointA(e.geocode.center)
         }else{
-          props.updatePointB(e.geocode.center)
+          updateWaypointB(e.geocode.center)
         }
        
       })
       .addTo(map);
 
-    
+    //eslint-disable-next-line
   }, []);
+
+  // I only need this to run ONCE because otherwise it would create new Search boxes on each reload
 
   return null;
 }

@@ -1,14 +1,19 @@
 import L from "leaflet";
 import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine";
-import *  as Geocoder from 'leaflet-control-geocoder'
+import {useContext} from 'react'
+import MapContext from '../../context/map-context'
 
 
 const CreateRoutingMachineLayer = (props) => {
 
-  const {waypoints} = props;
+  const {setDistance,waypointA,waypointB} = useContext(MapContext)
+
   const instance = L.Routing.control({
-    waypoints,
+    waypoints:[
+      L.latLng(waypointA),
+      L.latLng(waypointB)
+    ],
     lineOptions: {
       styles: [{ color: "#6FA1EC", weight: 4 }]
     },
@@ -23,7 +28,7 @@ const CreateRoutingMachineLayer = (props) => {
 
   instance.on('routesfound', function (e) {
    let distance = e.routes[0].summary.totalDistance;
-    props.onSubmit(distance)
+    setDistance(distance)
 });
   return instance;
 };
