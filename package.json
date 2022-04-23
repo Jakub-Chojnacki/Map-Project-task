@@ -35,6 +35,11 @@
       "react-app/jest"
     ]
   },
+  "jest": {
+    "transformIgnorePatterns": [
+      "!node_modules/"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -48,6 +53,8 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
     "cypress-localstorage-commands": "^1.7.0"
   }
 }
