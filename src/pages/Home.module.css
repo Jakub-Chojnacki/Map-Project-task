@@ -1,5 +1,5 @@
 .container{
-    width: 100vw;
+    width: 100%;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -25,7 +25,10 @@
 .important{
    color: #ED2939;
     font-weight: bold;
-    font-size: 1.2rem;
+    margin: 1em 0;
+    
+}
+
+.history-title{
     margin-top: 1em;
-    margin-bottom: 3em;
 }

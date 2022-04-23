@@ -7,14 +7,17 @@ const History = () => {
     const elements = history.map((search)=> {
         return(
             <div className={styles.item} key={search.id}>
-             <span>From</span> {search.addressA} <span>To</span> {search.addressB}
+                <span>From</span> {search.addressA} <span>To</span> {search.addressB}
             </div>
         )
         
     })
     return (
         <React.Fragment>
-          {elements}
+            <div className={styles.history}>
+             
+             {elements}
+          </div>
         </React.Fragment>
     )
 }

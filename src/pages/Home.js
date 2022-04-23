@@ -8,6 +8,7 @@ import History from '../components/History'
 const Home = () => {
 
   const {waypointA,waypointB,addressA,addressB} = useContext(MapContext)
+  
   const [showHistory,setShowHistory] = useState(false)
   let navigate = useNavigate(); 
   const history = JSON.parse(localStorage.getItem("searches"));
@@ -28,15 +29,16 @@ const Home = () => {
   }
 return (
     <main className={styles.container}>
+          {(!waypointA || !waypointB) &&<h1 className={styles.important}>Choose two waypoints to see results</h1>}
          <Map showSearch={true} center={waypointA ? waypointA : [51.15,1.1]}/>
-         {(!waypointA || !waypointB) &&<p class={styles.important}>Choose two waypoints to see results</p>}
          { (waypointA && waypointB) &&
         <button className={styles.btn} onClick={checkResultsHandler} disabled={!waypointA || !waypointB} >
              Check results
          </button>
          }
-        <h2>Your History:</h2>
+        <h2 className={styles[`history-title`]}>Your History:</h2>
         {(history && showHistory )&& <History />}
+        {(!history && showHistory ) && <p>There is no history to show</p>} 
         <button className={styles.btn} onClick={showHistoryHandler}>{showHistory?  `Hide History` : `Show History`}</button>
        
     </main>

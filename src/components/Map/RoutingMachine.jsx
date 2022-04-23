@@ -18,6 +18,7 @@ const CreateRoutingMachineLayer = (props) => {
       styles: [{ color: "#6FA1EC", weight: 4 }]
     },
     show: false,
+    showSpinner: true,
     addWaypoints: false,
     routeWhileDragging: false,
     draggableWaypoints: false,
@@ -25,8 +26,9 @@ const CreateRoutingMachineLayer = (props) => {
     showAlternatives: false,
 
   });
-
-  instance.on('routesfound', function (e) {
+  
+  instance
+  .on('routesfound', function (e) {
    let distance = e.routes[0].summary.totalDistance;
     setDistance(distance)
 });

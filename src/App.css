@@ -44,17 +44,17 @@ img, picture, video, canvas, svg {
   max-width: 100%;
 }
 
+.App{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
 
 .leaflet-control-container .leaflet-routing-container-hide {
   display: none;
 }
 
-
- .App{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
 .leaflet-container{
   height:50vh;
   flex:1;

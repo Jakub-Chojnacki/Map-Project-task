@@ -7,10 +7,12 @@ const Calculator = (props) => {
     const [pricePerKm, setPricePerKm] = useState(1.25)
     const {distance,addressA,addressB} = useContext(MapContext) // in metres
     const distanceKm = (distance / 1000).toFixed(2) // in kilometers
+
     const numberOfDays = Math.ceil(distanceKm/800);
-    const totalCost = ((distanceKm * pricePerKm* 1.1)+ numberOfDays * 1000).toFixed(2);
+    const totalCost = ((distanceKm * pricePerKm * 1.1)+ numberOfDays * 1000).toFixed(2);
+
     const handleChange = (e) => {
-        if(e.target.value >= 0.01){
+        if(e.target.value >= 0){
         setPricePerKm(e.target.value)
         }
     }
@@ -23,8 +25,8 @@ const Calculator = (props) => {
                 <p>To: {addressB}</p>
                 <p>Price per km: {pricePerKm}</p>
                 <p>Distance in kilometers: {distanceKm}</p>
-                <p>Total cost: {totalCost}zł</p>
                 <p>Number of days: {numberOfDays}</p>
+                <p>Total cost: {totalCost}zł</p>
             </div>
 
             <Pdf targetRef={pdf} filename="map-results.pdf">
