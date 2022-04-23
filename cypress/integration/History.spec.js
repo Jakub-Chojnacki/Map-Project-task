@@ -1,6 +1,7 @@
 
 describe("Test whether history works", ()=> {
     it("Shows fallback if history is empty", ()=>{
+        cy.wait(1000)
         cy.visit("localhost:3000");
         cy.contains("button", "Show History").click({force:true})
         cy.contains("p","There is no history to show")

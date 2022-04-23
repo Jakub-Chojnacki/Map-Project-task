@@ -10,14 +10,14 @@ describe("Test homepage", ()=>{
 
     it("can input waypointB", ()=> {  
         cy.get('input[placeholder="Enter point B"]').type('Sopot{enter}')
-        cy.wait(1000)
+        cy.wait(2000)
         cy.get('li[data-result-index="0"] a').click({force:true, multiple:true})
-        cy.wait(1000)
+        cy.wait(2000)
     })
 
     it("shows results button", ()=> {
         cy.contains("button", "Check results").click()
-        cy.wait(1000)
+        cy.wait(2000)
     })
 
     it("displays the results", ()=> {
