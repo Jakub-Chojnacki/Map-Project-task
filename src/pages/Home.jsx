@@ -4,6 +4,8 @@ import {useContext,useState} from 'react'
 import styles from './Home.module.css'
 import Map from '../components/Map/Map'
 import History from '../components/History'
+import { motion } from 'framer-motion';
+
 
 const Home = () => {
 
@@ -28,7 +30,8 @@ const Home = () => {
     setShowHistory(!showHistory)
   }
 return (
-    <main className={styles.container}>
+    <main className={styles.container}
+     >
           {(!waypointA || !waypointB) &&<h1 className={styles.important}>Choose two waypoints to see results</h1>}
          <Map showSearch={true} center={waypointA ? waypointA : [51.15,1.1]}/>
          { (waypointA && waypointB) &&
