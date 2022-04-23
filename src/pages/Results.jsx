@@ -7,8 +7,6 @@ import {useContext} from 'react'
 import {Navigate} from 'react-router-dom'
 import { motion } from 'framer-motion';
 const Results = () => {
-    
-
 const containerVariants = {
   hidden: { 
     opacity: 0, 

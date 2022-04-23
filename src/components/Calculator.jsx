@@ -5,7 +5,7 @@ import Pdf from "react-to-pdf";
 const Calculator = (props) => {
     const pdf = useRef()
     const [pricePerKm, setPricePerKm] = useState(1.25)
-    const {distance,addressA,addressB} = useContext(MapContext) // in metres
+    const {distance,addressA,addressB} = useContext(MapContext) // we get distance in metres
     const distanceKm = (distance / 1000).toFixed(2) // in kilometers
 
     const numberOfDays = Math.ceil(distanceKm/800);
