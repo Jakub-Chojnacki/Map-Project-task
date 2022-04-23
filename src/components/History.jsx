@@ -14,8 +14,7 @@ const History = () => {
     })
     return (
         <React.Fragment>
-            <div className={styles.history}>
-             
+            <div className={styles.history}>         
              {elements}
           </div>
         </React.Fragment>

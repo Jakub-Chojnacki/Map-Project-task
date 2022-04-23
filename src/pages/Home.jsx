@@ -5,24 +5,22 @@ import styles from './Home.module.css'
 import Map from '../components/Map/Map'
 import History from '../components/History'
 
-
-
 const Home = () => {
-
-  const {waypointA,waypointB,addressA,addressB} = useContext(MapContext)
-  
   const [showHistory,setShowHistory] = useState(false)
+  const {waypointA,waypointB,addressA,addressB} = useContext(MapContext)
+
   let navigate = useNavigate(); 
+
   const history = JSON.parse(localStorage.getItem("searches"));
   const checkResultsHandler = () =>{ 
-   
+    //Save the search in localStorage
     if(history != null){
-     
       const newHistory = JSON.stringify([...history, {addressA,addressB,id:history.length+1}])
       localStorage.setItem('searches', newHistory)
     }else {
       localStorage.setItem('searches',JSON.stringify([ {addressA,addressB, id:1}]))
     }
+    //change url to results
     let path = `/results`; 
     navigate(path);
   }
@@ -33,9 +31,14 @@ return (
     <main className={styles.container}
      >
           {(!waypointA || !waypointB) &&<h1 className={styles.important}>Choose two waypoints to see results</h1>}
+
          <Map showSearch={true} center={waypointA ? waypointA : [51.15,1.1]}/>
+         
          { (waypointA && waypointB) &&
-        <button className={styles.btn} onClick={checkResultsHandler} disabled={!waypointA || !waypointB} >
+        <button 
+        className={styles.btn} 
+        onClick={checkResultsHandler}
+        disabled={!waypointA || !waypointB}>
              Check results
          </button>
          }

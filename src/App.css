@@ -50,6 +50,12 @@ img, picture, video, canvas, svg {
   align-items:center;
 }
 
+.home{
+  width: 100vw;
+}
+
+
+//leaflet
 
 .leaflet-control-container .leaflet-routing-container-hide {
   display: none;
@@ -64,8 +70,4 @@ img, picture, video, canvas, svg {
   display:flex;
   width: 80%;
 } 
-
-.home{
-  width: 100vw;
-}
 

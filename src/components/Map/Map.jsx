@@ -14,6 +14,7 @@ const Map = (props) => {
   }, [waypointA,waypointB, rMachine]);
  
     const validateAddress = (city,country,road,house_number,town) => {
+      //depending on the search you might not get a road for example so we need to check whether the property exists
         let temp = '';
         if(road){
           temp+=`${road}`
@@ -31,6 +32,7 @@ const Map = (props) => {
         if(country){
             temp+=`, ${country}`
         }
+        // regex to remove a comma if it's first
         temp = temp.replace(/^,/, '');
         return temp;
     }
@@ -40,8 +42,6 @@ const Map = (props) => {
        const {city,country,road,house_number,town}= geoData.properties.address
        const temp = validateAddress(city,country,road,house_number,town)
       setAddressA(temp)
-      
-     
     }
     
     const updateWaypointB = (geoData) => {

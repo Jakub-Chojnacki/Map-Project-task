@@ -7,7 +7,6 @@ import L from "leaflet";
 
 export default function LeafletControlGeocoder(props) {
   const map = useMap();
-
   useEffect(() => {
     var geocoder = L.Control.Geocoder.nominatim();
     if (typeof URLSearchParams !== "undefined" && window.location.search) {
