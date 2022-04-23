@@ -21,8 +21,8 @@ describe("Test homepage", ()=>{
     })
 
     it("displays the results", ()=> {
-        cy.contains("p","You are traveling from: Gdansk, Poland")
-        cy.contains("p","To: Sopot, Polska")
+        cy.contains("p","You are traveling from:")
+        cy.contains("p","To:")
         cy.contains("p", "Price per km: 1.25")
         cy.contains("p", "Total cost: 1017.06zł")
     })
