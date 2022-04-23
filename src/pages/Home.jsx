@@ -4,7 +4,7 @@ import {useContext,useState} from 'react'
 import styles from './Home.module.css'
 import Map from '../components/Map/Map'
 import History from '../components/History'
-import { motion } from 'framer-motion';
+
 
 
 const Home = () => {
