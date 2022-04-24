@@ -13,7 +13,7 @@ const Map = (props) => {
     }
   }, [waypointA,waypointB, rMachine]);
  
-    const validateAddress = (city,country,road,house_number,town) => {
+    const validateAddress = (city,country,road,house_number,town,municipality) => {
       //depending on the search you might not get a road for example so we need to check whether the property exists
         let temp = '';
         if(road){
@@ -22,12 +22,14 @@ const Map = (props) => {
         if(house_number){
           temp+=` ${house_number}`
         }
-      
         if(city){
             temp+=`, ${city}`
         }
         if(town){
           temp+=`, ${town}`
+        }
+        if((!city && !town) && municipality){
+          temp+=`, ${municipality}`
         }
         if(country){
             temp+=`, ${country}`
@@ -39,15 +41,15 @@ const Map = (props) => {
   
     const updateWaypointA = (geoData) => {
       setWaypointA(geoData.center);
-       const {city,country,road,house_number,town}= geoData.properties.address
-       const temp = validateAddress(city,country,road,house_number,town)
+       const {city,country,road,house_number,town,municipality}= geoData.properties.address
+       const temp = validateAddress(city,country,road,house_number,town,municipality)
       setAddressA(temp)
     }
     
     const updateWaypointB = (geoData) => {
       setWaypointB(geoData.center);
-      const {city,country,road,house_number,town}= geoData.properties.address
-      const temp = validateAddress(city,country,road,house_number,town)
+      const {city,country,road,house_number,town,municipality}= geoData.properties.address
+      const temp = validateAddress(city,country,road,house_number,town,municipality)
       setAddressB(temp)
       
 
