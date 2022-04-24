@@ -52,6 +52,7 @@ img, picture, video, canvas, svg {
 
 .home{
   width: 100vw;
+
 }
 
 
@@ -69,3 +70,10 @@ img, picture, video, canvas, svg {
   width: 80%;
 } 
 
+
+@media (max-width: 768px){
+  .leaflet-container{
+    height:70vh;
+    flex:1;
+  }
+}

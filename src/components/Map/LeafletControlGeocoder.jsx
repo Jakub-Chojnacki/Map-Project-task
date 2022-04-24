@@ -30,6 +30,7 @@ export default function LeafletControlGeocoder(props) {
       geocoder
     })
       .on("markgeocode", function (e) {
+        console.log(e)
         map.fitBounds(e.geocode.bbox);
         if(props.updateWaypointA){
           props.updateWaypointA(e.geocode)
